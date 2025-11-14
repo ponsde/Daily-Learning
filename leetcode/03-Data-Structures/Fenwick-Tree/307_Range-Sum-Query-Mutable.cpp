@@ -1,3 +1,7 @@
+#include <vector>
+using namespace std;
+
+
 class NumArray {
 private:
     vector<int> nums;
@@ -40,9 +44,3 @@ public:
     }
 };
 
-/**
- * Your NumArray object will be instantiated and called as such:
- * NumArray* obj = new NumArray(nums);
- * obj->update(index,val);
- * int param_2 = obj->sumRange(left,right);
- */
