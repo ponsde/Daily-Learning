@@ -8,6 +8,8 @@ pair<long long, long long> cal(long long ni, long long di, long long ei);
 
 int main(void)
 {
+    ios::sync_with_stdio(false);
+    cin.tie(nullptr);
     long long k;
     cin >> k;
     for (long long i = 0; i < k; ++i)
@@ -20,7 +22,7 @@ int main(void)
             cout << "NO" << endl;
             continue;
         }
-        cout << t.first << " " << t.second << endl;
+        cout << t.first << " " << t.second << '\n';
     }
 }
 
@@ -49,3 +51,10 @@ pair<long long, long long> cal(long long ni, long long di, long long ei)
 }
 
 // 需要注意sqrt的精度问题，因为sqrt是浮点精度就要注意，免得出错
+
+// 要注意这个
+// ios::sync_with_stdio(false);
+// cin.tie(nullptr);
+// 要背下来了，之后遇到大数据的题目用这个加快速度
+
+// 二次注意，在oj上提交时，用endl会超时，要用\n， 从现在开始就用\n
