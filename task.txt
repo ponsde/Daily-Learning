@@ -1,3 +1,3 @@
 zufeoj week6 7-5
 leetcode heap 2406 重做一遍  (已完成)
-leetcode heap 767 用灵神的方法
+leetcode heap 767 用灵神的方法 (算是完成了吧...)
