@@ -30,9 +30,7 @@ public:
                 }
                 ans += t2.second;
                 t2.first--;
-                cnt[0] = 0;
-                cnt[1] = 0;
-                cnt[2] = 0;
+                cnt[0] = cnt[1] = cnt[2] = 0;
                 cnt[t2.second - 'a']++;
                 pq.push(t2);
                 pq.push(t);
@@ -40,9 +38,7 @@ public:
             }
             if (!ans.empty() && ans.back() != t.second)
             {
-                cnt[0] = 0;
-                cnt[1] = 0;
-                cnt[2] = 0;
+                cnt[0] = cnt[1] = cnt[2] = 0;
             }
             ans += t.second;
             t.first--;
@@ -55,3 +51,5 @@ public:
 
 // 还是用堆储存，但这次有三个字母，其他没啥区别，还是先放最大的字母，
 // 若是达到两个，然后下一个加入的也会是该字母，换下一个最大的字母加入
+
+// 新知道了个cnt[0] = cnt[1] = cnt[2] = 0
