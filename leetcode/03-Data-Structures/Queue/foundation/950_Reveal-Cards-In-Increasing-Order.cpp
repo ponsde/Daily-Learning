@@ -1,7 +1,58 @@
 #include <vector>
 #include <algorithm>
+#include <deque>
 
 using namespace std;
+
+// 找第一个跳第二个，重复该过程
+// sort deck数组
+// 然后每个找到的第一个放入第一小、第二小的数，循环直到i历遍deck
+// skip决定当前坑是否跳过
+
+class Solution {
+public:
+    vector<int> deckRevealedIncreasing(vector<int>& deck) {
+        int l = deck.size();
+        sort(deck.begin(), deck.end());
+        deque<int> ans(l, -1);
+        int skip = false;
+        int j = 0;
+        for (int i = 0; i < l; ++i)
+        {
+            while (1)
+            {
+                if (ans[j] == -1)
+                {
+                    if (skip == true)
+                    {
+                        skip = false;
+                    }
+                    else
+                    {
+                        skip = true;
+                        ans[j] = deck[i];
+                        break;
+                    }
+                }
+                ++j;
+                if (j == l)
+                {
+                    j = 0;
+                }
+            }
+        }
+        vector<int> result;
+        for (int i = 0; i < l; ++i)
+        {
+            result.push_back(ans[i]);
+        }
+        return result;
+    }
+
+};
+
+
+
 
 class Solution
 {
