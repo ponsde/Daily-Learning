@@ -12,7 +12,7 @@
 *   **课程 CS106L (Stanford):** 进度一半
 
 *   **课程 CSAPP (PKU ICS):** 正在进行
-    *   正在进行: Data Lab
+    *   正在进行: [Data Lab](./csapp(pku)/datalab)
 
 *   **算法 (Algorithms):**
     *   **总纲:** [灵神《如何科学刷题》](https://leetcode.cn/discuss/post/3141566/ru-he-ke-xue-shua-ti-by-endlesscheng-q3yd/)
