@@ -1,8 +1,8 @@
-/* 
- * CS:APP Data Lab 
- * 
+/*
+ * CS:APP Data Lab
+ *
  * <Please put your name and userid here>
- * 
+ *
  * bits.c - Source file with your solutions to the Lab.
  *          This is the file you will hand in to your instructor.
  *
@@ -10,7 +10,7 @@
  * compiler. You can still use printf for debugging without including
  * <stdio.h>, although you might get a compiler warning. In general,
  * it's not good practice to ignore compiler warnings, but in this
- * case it's OK.  
+ * case it's OK.
  */
 
 #if 0
@@ -129,7 +129,6 @@ NOTES:
  *      the correct answers.
  */
 
-
 #endif
 /* Copyright (C) 1991-2022 Free Software Foundation, Inc.
    This file is part of the GNU C Library.
@@ -166,27 +165,69 @@ NOTES:
    - 56 emoji characters
    - 285 hentaigana
    - 3 additional Zanabazar Square characters */
-/* 
- * bitAnd - x&y using only ~ and | 
+/*
+ * bitAnd - x&y using only ~ and |
  *   Example: bitAnd(6, 5) = 4
  *   Legal ops: ~ |
  *   Max ops: 8
  *   Rating: 1
  */
-int bitAnd(int x, int y) {
-  return 2;
+int bitAnd(int x, int y)
+{
+  int k = x | y;
+  int m = ~x | y;
+  int n = x | ~y;
+
+  int a = ~k | ~m | ~n;
+
+  return ~a;
+
+  // 求 &
+  //(0, 0), (0, 1), (1, 0), (1, 1)
+  // 第一种， k得0， m得1， n得1
+  // 第二种， k得1， m得1， n得0
+  // 第三种， k得1， m得0， n得1
+  // 第四种， k得1， m得1， n得1
+  // 因此，只有(1, 1)时，k、m、n全为1
+  // 因为只能用 ~ 和 |
+  // 每个取反然后 | ，此时 第一、二、三种为1， 第四种为0
+  // 返回 ~结果即可
 }
-/* 
+/*
  * bitConditional - x ? y : z for each bit respectively
  *   Example: bitConditional(0b00110011, 0b01010101, 0b00001111) = 0b00011101
  *   Legal ops: & | ^ ~
  *   Max ops: 8
  *   Rating: 1
  */
-int bitConditional(int x, int y, int z) {
-  return 2;
+int bitConditional(int x, int y, int z)
+{
+  int m1 = x & y;
+  int m2 = ~x | y;
+
+  int n1 = x | z;
+  int n2 = ~x & z;
+
+  int k1 = m1 | m2;
+  int k2 = n1 | n2;
+
+  return k1 & k2;
+
+  // 每个位检查，若为1取y，若为0取z
+  // 先x & y， 因为1时取y， 此时正确取值的为正确，错误取值为0
+  // 再 ~x | y， 1为0， 0为1， 此时正确取值还是正确，错误取值为1
+
+  // 同理， x | z，0时取z， 此时正确取值为正确， 错误取值为 1
+  // ~x & z， 正确为正确，错误取值为0；
+
+  // 此时m1、m2， n1、n2的区别就在错误的位置，并且一个为0一个为1
+  // 因此m1 | m2， n1 | n2， 错误位置皆为1，例如
+  // yy11yy1
+  // 11zz11z
+  // 想要yyzzyyz
+  // 则k1 & k2
 }
-/* 
+/*
  * byteSwap - swaps the nth byte and the mth byte
  *  Examples: byteSwap(0x12345678, 1, 3) = 0x56341278
  *            byteSwap(0xDEADBEEF, 0, 2) = 0xDEEFBEAD
@@ -195,21 +236,32 @@ int bitConditional(int x, int y, int z) {
  *  Max ops: 25
  *  Rating: 2
  */
-int byteSwap(int x, int n, int m) {
-    return 2;
+int byteSwap(int x, int n, int m)
+{
+  int m1 = (x >> (2 * n * 4)) & 0xff;
+  int n1 = (x >> (2 * m * 4)) & 0xff;
+
+  int k1 = (m1 << (2 * m * 4)) | (n1 << (2 * n * 4));
+
+  int k2 = (x ^ (m1 << (2 * n * 4))) ^ (n1 << (2 * m * 4));
+
+  return k1 | k2;
 }
-/* 
+/*
  * logicalShift - shift x to the right by n, using a logical shift
  *   Can assume that 0 <= n <= 31
  *   Examples: logicalShift(0x87654321,4) = 0x08765432
  *   Legal ops: ! ~ & ^ | + << >>
  *   Max ops: 20
- *   Rating: 3 
+ *   Rating: 3
  */
-int logicalShift(int x, int n) {
-  return 2;
+int logicalShift(int x, int n)
+{
+  int k = (x >> 31);
+  int m = x & 0x7fffffff;
+  return m >> n;
 }
-/* 
+/*
  * cleanConsecutive1 - change any consecutive 1 to zeros in the binary form of x.
  *   Consecutive 1 means a set of 1 that contains more than one 1.
  *   Examples cleanConsecutive1(0x10) = 0x10
@@ -220,11 +272,13 @@ int logicalShift(int x, int n) {
  *   Max ops: 25
  *   Rating: 4
  */
-int cleanConsecutive1(int x){
-    return 2;
+int cleanConsecutive1(int x)
+{
+
+  return 2;
 }
-/* 
- * countTrailingZero - return the number of consecutive 0 from the lowest bit of 
+/*
+ * countTrailingZero - return the number of consecutive 0 from the lowest bit of
  *   the binary form of x.
  *   YOU MAY USE BIG CONST IN THIS PROBLEM, LIKE 0xFFFF0000
  *   YOU MAY USE BIG CONST IN THIS PROBLEM, LIKE 0xFFFF0000
@@ -236,10 +290,11 @@ int cleanConsecutive1(int x){
  *   Max ops: 40
  *   Rating: 4
  */
-int countTrailingZero(int x){
-    return 2;
+int countTrailingZero(int x)
+{
+  return 2;
 }
-/* 
+/*
  * divpwr2 - Compute x/(2^n), for 0 <= n <= 30
  *  Round toward zero
  *   Examples: divpwr2(15,1) = 7, divpwr2(-33,4) = -2
@@ -247,17 +302,19 @@ int countTrailingZero(int x){
  *   Max ops: 15
  *   Rating: 2
  */
-int divpwr2(int x, int n) {
-    return 2;
+int divpwr2(int x, int n)
+{
+  return 2;
 }
-/* 
+/*
  * oneMoreThan - return 1 if y is one more than x, and 0 otherwise
  *   Examples oneMoreThan(0, 1) = 1, oneMoreThan(-1, 1) = 0
  *   Legal ops: ~ & ! ^ | + << >>
  *   Max ops: 15
  *   Rating: 2
  */
-int oneMoreThan(int x, int y) {
+int oneMoreThan(int x, int y)
+{
   return 2;
 }
 /*
@@ -271,28 +328,31 @@ int oneMoreThan(int x, int y) {
  *  Max ops: 25
  *  Rating: 3
  */
-int satMul3(int x) {
-    return 2;
+int satMul3(int x)
+{
+  return 2;
 }
-/* 
+/*
  * subOK - Determine if can compute x-y without overflow
  *   Example: subOK(0x80000000,0x80000000) = 1,
- *            subOK(0x80000000,0x70000000) = 0, 
+ *            subOK(0x80000000,0x70000000) = 0,
  *   Legal ops: ! ~ & ^ | + << >>
  *   Max ops: 20
  *   Rating: 3
  */
-int subOK(int x, int y) {
+int subOK(int x, int y)
+{
   return 2;
 }
-/* 
- * isLessOrEqual - if x <= y  then return 1, else return 0 
+/*
+ * isLessOrEqual - if x <= y  then return 1, else return 0
  *   Example: isLessOrEqual(4,5) = 1.
  *   Legal ops: ! ~ & ^ | + << >>
  *   Max ops: 24
  *   Rating: 3
  */
-int isLessOrEqual(int x, int y) {
+int isLessOrEqual(int x, int y)
+{
   return 2;
 }
 /*
@@ -309,7 +369,7 @@ int trueThreeFourths(int x)
 {
   return 2;
 }
-/* 
+/*
  * float_twice - Return bit-level equivalent of expression 2*f for
  *   floating point argument f.
  *   Both the argument and result are passed as unsigned int's, but
@@ -320,10 +380,11 @@ int trueThreeFourths(int x)
  *   Max ops: 30
  *   Rating: 4
  */
-unsigned float_twice(unsigned uf) {
+unsigned float_twice(unsigned uf)
+{
   return 2;
 }
-/* 
+/*
  * float_i2f - Return bit-level equivalent of expression (float) x
  *   Result is returned as unsigned int, but
  *   it is to be interpreted as the bit-level representation of a
@@ -332,10 +393,11 @@ unsigned float_twice(unsigned uf) {
  *   Max ops: 30
  *   Rating: 4
  */
-unsigned float_i2f(int x) {
+unsigned float_i2f(int x)
+{
   return 2;
 }
-/* 
+/*
  * float_f2i - Return bit-level equivalent of expression (int) f
  *   for floating point argument f.
  *   Argument is passed as unsigned int, but
@@ -347,10 +409,11 @@ unsigned float_i2f(int x) {
  *   Max ops: 30
  *   Rating: 4
  */
-int float_f2i(unsigned uf) {
+int float_f2i(unsigned uf)
+{
   return 2;
 }
-/* 
+/*
  * float_pwr2 - Return bit-level equivalent of the expression 2.0^x
  *   (2.0 raised to the power x) for any 32-bit integer x.
  *
@@ -358,11 +421,12 @@ int float_f2i(unsigned uf) {
  *   representation as the single-precision floating-point number 2.0^x.
  *   If the result is too small to be represented as a denorm, return
  *   0. If too large, return +INF.
- * 
- *   Legal ops: Any integer/unsigned operations incl. ||, &&. Also if, while 
- *   Max ops: 30 
+ *
+ *   Legal ops: Any integer/unsigned operations incl. ||, &&. Also if, while
+ *   Max ops: 30
  *   Rating: 4
  */
-unsigned float_pwr2(int x) {
-    return 2;
+unsigned float_pwr2(int x)
+{
+  return 2;
 }
