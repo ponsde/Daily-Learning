@@ -257,9 +257,13 @@ int byteSwap(int x, int n, int m)
  */
 int logicalShift(int x, int n)
 {
-  int k = (x >> 31);
-  int m = x & 0x7fffffff;
-  return m >> n;
+  int m = x & 0x80000000;
+  int k = ((x >> 31) & 0x1) << (31 - n);
+  return ((x >> n) ^ (m >> n)) | k;
+
+  // (x >> n) ^ (m >> n) 将首位算数平移出来的和首位变为0
+  // 然后取首位为多少再向左平移到平移后首位的位置再 |
+  // 完成逻辑右移
 }
 /*
  * cleanConsecutive1 - change any consecutive 1 to zeros in the binary form of x.
@@ -274,8 +278,20 @@ int logicalShift(int x, int n)
  */
 int cleanConsecutive1(int x)
 {
+  int m = x & (x << 1);
+  int n = x & ((x >> 1) & 0x7fffffff);
+  int k = (m | n) ^ x;
+  return k;
 
-  return 2;
+  // 假设 010    0110
+  // 一级 10     110
+  // 二级  01      110
+  // m: 00      0100
+  // n:  00       100
+  // m | n: 000  0110
+  // 可知，当1单独时， m | n的位置为0，1连续时还为1
+  // 将 (m | n) ^ x, 连续的1为0，单独的1为1
+  // 即为结果
 }
 /*
  * countTrailingZero - return the number of consecutive 0 from the lowest bit of
@@ -292,7 +308,29 @@ int cleanConsecutive1(int x)
  */
 int countTrailingZero(int x)
 {
-  return 2;
+  int m = x & -x;
+  int n = 0;
+  int j = m;
+  int k = 0;
+  int mx = !x * 32;
+  n += (!(!(m >> 16))) << 4;
+  m >>= (!(!(m >> 16))) << 4;
+  n += (!(!(m >> 8))) << 3;
+  m >>= (!(!(m >> 8))) << 3;
+  n += (!(!(m >> 4))) << 2;
+  m >>= (!(!(m >> 4))) << 2;
+  n += (!(!(m >> 2))) << 1;
+  m >>= (!(!(m >> 2))) << 1;
+  n += (!(!(m >> 1)));
+  m >>= (!(!(m >> 1)));
+
+  return n | mx;
+
+  // 先通过 x & -x 找到最低位的1
+  // 然后通过二分判断是否符合
+  // 若是后移16位时结果为0，说明1在后16位，n + 0，不将m向后移动16位
+  // 若是后移16位时结果为不为0，说明1不在后16位，n + 16，将m向后移动16位，以此类推
+  // 通过 ! 进行判断结果是否为0是否需要移动
 }
 /*
  * divpwr2 - Compute x/(2^n), for 0 <= n <= 30
@@ -304,7 +342,12 @@ int countTrailingZero(int x)
  */
 int divpwr2(int x, int n)
 {
-  return 2;
+  int sign = x >> 31;
+  int bias = sign & ((1 << n) + ~0);
+  return (x + bias) >> n;
+
+  // 当sign 为 0 时，即x为正数，直接平移即可，bias = 0;
+  // 当sign 为 -1 时，x为负数，加上bias = (1 << n) - 1, 然后再平移即可
 }
 /*
  * oneMoreThan - return 1 if y is one more than x, and 0 otherwise
@@ -315,7 +358,10 @@ int divpwr2(int x, int n)
  */
 int oneMoreThan(int x, int y)
 {
-  return 2;
+  int a = !!(x - ~(1 << 31));
+  return (!((y + (~x) + 1) + (~1) + 1)) & (~a + 1);
+
+  // 当x为INT_MAX时，x + 1会发生溢出
 }
 /*
  * satMul3 - multiplies by 3, saturating to Tmin or Tmax if overflow
@@ -330,7 +376,26 @@ int oneMoreThan(int x, int y)
  */
 int satMul3(int x)
 {
-  return 2;
+  int s1 = x >> 31;
+  int a = x << 1;
+  int s2 = a >> 31;
+  int p = a + x;
+  int s3 = p >> 31;
+  int q = (s1 ^ s2) | (s1 ^ s3) | (s2 ^ s3);
+  int k = !q;
+  int m = (~k + 1) & p;
+  int n = (k + ~0) & (s1 ^ 0x7fffffff);
+  return m | n;
+
+  // 好丑陋的解法
+  // 通过s1、s2、s3判断是否有发生溢出
+  // 若发生溢出，则m为0
+  // 然后根据s1判断值为INT_MAX还是INT_MIN
+  // 当k为1时，即未发生移除，m为p
+
+  // s1 ^ 0x7fffffff
+  // 当s1为0时，全为0无反应，INT_MAX
+  // 当s1为-1是，全为1全反, INT_MIN
 }
 /*
  * subOK - Determine if can compute x-y without overflow
@@ -342,7 +407,22 @@ int satMul3(int x)
  */
 int subOK(int x, int y)
 {
-  return 2;
+  int sx = x >> 31;
+  int sy = y >> 31;
+  int b1 = sx ^ sy; // 若是sx == xy,则b1 为 0
+
+  int res = x + ~y + 1;
+  int sr = res >> 31; // 减法得到的正负号
+  int k = !(sx ^ sr); // 若sr == sx, 则 k = 1，说明没溢出；
+  return !((~b1 + 1) & (!k));
+
+  // 若是x、y同号，则不会溢出
+  // 若是异号，才有可能溢出
+  // 然后继续往后判断即可
+
+  // 当b = 0时， ~b1 + 1为0
+  // 当b = 1时， ~b1 + 1为-1
+  // 可以方便的看是否要某些数
 }
 /*
  * isLessOrEqual - if x <= y  then return 1, else return 0
