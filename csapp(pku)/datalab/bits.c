@@ -358,8 +358,8 @@ int divpwr2(int x, int n)
  */
 int oneMoreThan(int x, int y)
 {
-  int a = !!(x - ~(1 << 31));
-  return (!((y + (~x) + 1) + (~1) + 1)) & (~a + 1);
+  int a = !!(x + ~(~(1 << 31)) + 1);
+  return (!((y + (~x) + 1) + ~1 + 1)) & (~a + 1);
 
   // 当x为INT_MAX时，x + 1会发生溢出
 }
