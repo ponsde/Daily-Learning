@@ -433,7 +433,17 @@ int subOK(int x, int y)
  */
 int isLessOrEqual(int x, int y)
 {
-  return 2;
+  int s1 = x >> 31;
+  int s2 = y >> 31;
+  int t = s1 + ~s2 + 1;
+  int k1 = t >> 31;              // 若是同号，则k1 = 0， k2 = 0，
+  int k2 = t & 0x1;              // 若是异号，若x为正，y为负，应返回0，k1 = 0， k2 = 1；
+  int p = (~k1 + 1) & (~k2 + 1); // 若是x为负，y为正，应返回1，k1 = -1， k2 = 1；
+  int j = !(~k2 + 1);            // 将j与之后的比较&， 若是是异号，则之后的比较为0，直接返回p，若是同号，则不影响之后的比较
+
+  int m = j & (!!((x + ~y) >> 31)); // 同号相减不会发生溢出， 若是m为-1，则x <= y， 返回1,若m 为 0， 则返回0
+
+  return p | m;
 }
 /*
  * trueThreeFourths - multiplies by 3/4 rounding toward 0,
@@ -447,7 +457,17 @@ int isLessOrEqual(int x, int y)
  */
 int trueThreeFourths(int x)
 {
-  return 2;
+  int s1 = x >> 31;          // 如果x为正数，s1 = 0, 若为负数， s1 = -1;
+  int rest = x & 0x00000003; // 获得 4 * x + r的r
+  int m = x & 0xfffffffc;    // 获得 4 * x
+  int bias = s1 & ((1 << 2) + ~0);
+  int t1 = m >> 2;                             // 计算 4 * x 的 x
+  int k1 = (t1 << 1) + t1;                     // + 的优先级在 << 上，记得括号， 计算 3 * x
+  int k2 = (((rest << 1) + rest) + bias) >> 2; // 计算 3 * r / 4
+  return k1 + k2;
+
+  // 大数直接左会溢出，而直接右移会导致精度缺失
+  // 因此拆分做
 }
 /*
  * float_twice - Return bit-level equivalent of expression 2*f for
@@ -462,7 +482,34 @@ int trueThreeFourths(int x)
  */
 unsigned float_twice(unsigned uf)
 {
-  return 2;
+  unsigned sign = uf >> 31;
+  unsigned exp = (uf & 0x7f800000) >> 23;
+  unsigned frac = uf & 0x007fffff;
+  if (exp == 0) // 非规格化数的exp为0的情况
+  {
+    if (frac == 0) // 说明uf为+0或-0
+    {
+      return uf;
+    }
+    else
+    {
+      return (uf << 1) | (sign << 31); // 直接平移即可
+    }
+  }
+  if (exp == 255) // 说明是无穷大或者NaN
+  {
+    return uf;
+  }
+  unsigned k = (exp + 1) << 23;
+  if ((k >> 23) == 255) // 若x2后变为无穷大，根据sign返回对应的无穷大
+  {
+    if (sign == 0)
+    {
+      return 0x7f800000;
+    }
+    return 0xff800000;
+  }
+  return uf ^ (exp << 23) | k;
 }
 /*
  * float_i2f - Return bit-level equivalent of expression (float) x
@@ -475,7 +522,60 @@ unsigned float_twice(unsigned uf)
  */
 unsigned float_i2f(int x)
 {
-  return 2;
+  if (x == 0)
+  {
+    return 0;
+  }
+  if (x == 0x80000000)
+  {
+    return 0xcf000000;
+  }
+  unsigned sign = x >> 31;
+  if (x < 0)
+  {
+    x = ~x + 1;
+  }
+  int m = x;
+  unsigned t;
+  while (m > 0)
+  {
+    unsigned k = m & -m;
+    t = k;
+    m -= k;
+  }
+  unsigned E = 0;
+  unsigned frac = x - t;
+  while (t > 1)
+  {
+    E++;
+    t >>= 1;
+  }
+  if (E > 23)
+  {
+    int q = E - 23;
+    unsigned o = (1 << q) - 1;
+    unsigned p = o & frac;           // 后q位
+    unsigned last = (frac >> q) & 1; // 最后一位
+    int mid = 1 << (q - 1);
+    frac >>= q;
+    if (p > mid)
+    {
+      frac += 1;
+    }
+    if (p == mid)
+    {
+      if (last == 1)
+      {
+        frac += 1;
+      }
+    }
+  }
+  else if (E < 23)
+  {
+    frac <<= (23 - E);
+  }
+  unsigned exp = E + 127;
+  return (sign << 31) + (exp << 23) + frac;
 }
 /*
  * float_f2i - Return bit-level equivalent of expression (int) f
@@ -491,7 +591,25 @@ unsigned float_i2f(int x)
  */
 int float_f2i(unsigned uf)
 {
-  return 2;
+  int sign = uf >> 31;
+  int exp = (uf >> 23) & 0xff;
+  int frac = uf & 0x007fffff;
+  if (exp == 0)
+  {
+    return 0;
+  }
+  if (exp == 255)
+  {
+    return 0x80000000u;
+  }
+  int E = exp - 127;
+  if (E < 0)
+  {
+    return 0;
+  }
+  int s = sign == 0 ? 1 : -1;
+  int ans = (frac >> (23 - E)) | (1 << E);
+  return s * ans;
 }
 /*
  * float_pwr2 - Return bit-level equivalent of the expression 2.0^x
@@ -508,5 +626,21 @@ int float_f2i(unsigned uf)
  */
 unsigned float_pwr2(int x)
 {
-  return 2;
+  // exp = E + 127
+  if (x > 127) // 过大的数，即exp >= 255
+  {
+    return 0x7f800000;
+  }
+  if (x < -149) // 过小的时，即exp=0且frac = 0
+  {
+    return 0;
+  }
+  if (x >= -149 && x < -126) // exp=0但frac != 0的数
+  {
+    return 1 << (x + 149);
+  }
+  if (x >= -126 && x <= 127) // exp不等于0，frac = 0
+  {
+    return (x + 127) << 23;
+  }
 }
