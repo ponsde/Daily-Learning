@@ -10,3 +10,5 @@ leetcode queue 网格图 1210 （重做一遍） (完成)
 leetcode queue 1438 （重做一遍）(完成)
 
 leetcode trie 648 （重做一遍）(完成)
+
+leetcode trie 1233 (重做一遍)
