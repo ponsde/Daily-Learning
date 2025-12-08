@@ -86,3 +86,61 @@ public:
 };
 
 // 非常丑陋的写法
+
+// 写第二遍的时候的解法，更好看点
+
+struct Node
+{
+    bool end = false;
+    Node *next[27]{};
+};
+
+class Solution
+{
+public:
+    vector<string> removeSubfolders(vector<string> &folder)
+    {
+        int l = folder.size();
+        Node *root = new Node{};
+        for (int i = 0; i < l; ++i)
+        {
+            string w = folder[i];
+            auto cur = root;
+            for (auto c : w)
+            {
+                c = c == '/' ? 26 : c - 'a';
+                if (cur->next[c] == nullptr)
+                {
+                    cur->next[c] = new Node{};
+                }
+                cur = cur->next[c];
+            }
+            cur->end = true;
+        }
+        vector<string> ans;
+        for (int i = 0; i < l; ++i)
+        {
+            string w = folder[i];
+            string t = "";
+            int lw = w.size();
+            auto cur = root;
+            w.push_back('/');
+            for (int i = 0; i <= lw; ++i)
+            {
+                if (w[i] == '/' && cur->end == true)
+                {
+                    ans.push_back(t);
+                    break;
+                }
+                char c = w[i];
+                t += c;
+                c = c == '/' ? 26 : c - 'a';
+                cur = cur->next[c];
+            }
+        }
+        sort(ans.begin(), ans.end());
+        auto idx = unique(ans.begin(), ans.end());
+        ans.erase(idx, ans.end());
+        return ans;
+    }
+};
