@@ -16,7 +16,7 @@
 *   **课程 CSAPP (PKU ICS):** 正在进行
     *   完成: [Data Lab](./csapp(pku)/datalab)
     *   完成: [Bomb Lab](./csapp(pku)/bomblab)
-    *   正在完成: [Attack Lab](./csapp(pku)/attacklab)
+    *   完成: [Attack Lab](./csapp(pku)/attacklab)
 
 
 *   **算法 (Algorithms):**
