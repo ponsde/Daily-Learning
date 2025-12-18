@@ -15,4 +15,4 @@ leetcode trie 1233 (重做一遍) (完成)
 
 leetcode unionfind 3551 （重做一遍） (完成)
 
-leetcode linked list 725 (重做一遍)
+leetcode linked list 725 (重做一遍) (完成)
