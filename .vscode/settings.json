@@ -3,5 +3,17 @@
         "*": true,
         "c": false,
         "plaintext": false
+    },
+    "files.associations": {
+        "*.ys": "y86"
+    },
+    "[y86]": {
+        "editor.quickSuggestions": {
+            "other": false,
+            "comments": false,
+            "strings": false
+        },
+        "editor.suggest.showWords": false,
+        "editor.acceptSuggestionOnEnter": "off"
     }
 }

@@ -1,0 +1,38 @@
+要求实现一个sum_list
+由于long是8字节，地址也是8字节，就跳过考虑对齐的问题
+将%rdi的值，也就是val通过add加入%rax，然后将下一个的地址再压入%rdi
+注意addq不能直接内存到寄存器，需要先mrmovq，在addq
+通过判断%rdi的地址是否为空，也就是%rdi是否为空指针
+注意y86没有test，用andq
+若为空指针呢ret
+
+要求递归实现rsum_list
+将0传入rax
+每次call rsum_list前，将下一个地址放入rdi
+当rdi为空指针时，跳入ans，然后0
+当rdi不为空指针时，rbx 先为val的值，这样避免call返回的rax覆盖掉val
+等返回rax后，将上一个函数的返回值加上该函数的val，然后返回，重复即可
+小心val值被覆盖了，记得pushq，popq来保存和恢复val值
+
+要求实现冒泡排序
+整理思路：
+需要有两个判断，一个判断是否达到last，一个判断last是否到达data
+rdx 储存 last， rbx 储存 i
+同过设置多个loop减轻脑部压力
+loop1只负责检查last是否到底，若到底则ret
+loop2负责计算新的last，因为在loop2就会-8了，因此开头算出地址时不用-8
+注意y86没有lea，需要手动计算地址通过addq
+注意y86没有cmp，因此需要用subq来检查两个数是否相同，使用%r13作为比较的中转寄存器
+注意subq不支持立即数
+注意addq不支持内存操作数
+loop3检查是否i走到了last
+loop4检查是否需要交换，若需要则跳到swap
+因为无法直接mmmovq，所以需要中转寄存器
+然后在末尾计算新的i后跳入loop3
+重复即可
+
+如何调试呢?
+./yas 进行汇编
+./yis 测试运行
+
+记得在最后一行 stack: 处再回车，留个空，不然又要报错...
