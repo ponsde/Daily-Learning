@@ -17,4 +17,5 @@ leetcode unionfind 3551 （重做一遍） (完成)
 
 leetcode linked list 725 (重做一遍) (完成)
 
-leetcode linked list LCR 029 (重做一遍)
+leetcode linked list LCR 029 (重做一遍) (完成)
+leetcode linked list 234 （重做一遍）
