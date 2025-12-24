@@ -21,5 +21,7 @@ leetcode linked list LCR 029 (重做一遍) (完成)
 
 leetcode linked list 234 （重做一遍） (完成)
 
-leetcode linked list 457 （重做一遍）
-leetcode linked list 287 （重做一遍）
+leetcode linked list 457 （重做一遍） (完成)
+leetcode linked list 287 （重做一遍） (完成)
+
+leetcode linked list 160 （重做一遍）
