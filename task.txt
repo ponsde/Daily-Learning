@@ -24,8 +24,11 @@ leetcode linked list 234 （重做一遍） (完成)
 leetcode linked list 457 （重做一遍） (完成)
 leetcode linked list 287 （重做一遍） (完成)
 
-leetcode linked list 160 （重做一遍）
+leetcode linked list 160 （重做一遍） (完成)
+
+leetcode linked list 21 （重做一遍） (完成)
+leetcode linked list 23 （重做一遍） (完成)
+leetcode linked list 148（用分治重做一遍）（完成）
 
 leetcode linked list 21 （重做一遍）
-leetcode linked list 23 （重做一遍）
 leetcode linked list 148（用分治重做一遍）
