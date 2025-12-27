@@ -30,5 +30,6 @@ leetcode linked list 21 （重做一遍） (完成)
 leetcode linked list 23 （重做一遍） (完成)
 leetcode linked list 148（用分治重做一遍）（完成）
 
-leetcode linked list 21 （重做一遍）
-leetcode linked list 148（用分治重做一遍）
+leetcode linked list 21 （重做一遍）（完成）
+leetcode linked list 148（用分治重做一遍）（完成）\
+leetcode linked list 1171（重做一遍）
