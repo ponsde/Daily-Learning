@@ -35,4 +35,5 @@
         *   部分完成 [并查集](./leetcode/03-Data-Structures/UnionFind)
 
     *   **正在完成:** [链表、树、回溯](https://leetcode.cn/discuss/post/3142882/fen-xiang-gun-ti-dan-lian-biao-er-cha-sh-6srp/)
-        *   正在完成 [链表、树](./leetcode/04-Linked-List-and-tree/Linked-List)
+        *   正在完成 [链表](./leetcode/04-Linked-List-and-tree/Linked-List)
+        *   正在完成 [树](./leetcode/04-Linked-List-and-tree/Binary-Tree)
