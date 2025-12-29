@@ -35,3 +35,5 @@ leetcode linked list 148（用分治重做一遍）（完成）
 leetcode linked list 1171（重做一遍）（完成）
 
 leetcode linked list 707（重做一遍）
+
+leetcode binary tree 94（用迭代重做一遍）
