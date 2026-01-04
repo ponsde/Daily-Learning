@@ -40,3 +40,7 @@ leetcode binary tree 94（用迭代重做一遍）
 
 leetcode binary tree 988（重做一遍）
 leetcode linked list 707（重做一遍）
+
+leetcode binary tree 1026（用归的思想重做一遍）
+leetcode binary tree 1372（重做一遍）
+leetcode binary tree 971（重做一遍）
