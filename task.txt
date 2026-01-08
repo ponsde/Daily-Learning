@@ -48,4 +48,7 @@ leetcode binary tree 971（重做一遍）(完成)
 leetcode binary tree 606（更好的解法重做一遍）(完成)
 leetcode binary tree 1026（用归的思想重做一遍）(完成)
 
-leetcode binary tree 3319
+leetcode binary tree 3319（重做一遍）
+
+leetcode binary tree 1372（重做一遍）
+leetcode binary tree 1145（重做一遍）
