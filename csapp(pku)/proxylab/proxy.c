@@ -1,12 +1,10 @@
-#include <stdio.h>
 #include "csapp.h"
+#include "my_get.h"
+#include "my_connect.h"
 
-/* Recommended max cache and object sizes */
-#define MAX_CACHE_SIZE 1049000
-#define MAX_OBJECT_SIZE 102400
+extern ListNode *head;
 
-/* You won't lose style points for including this long line in your code */
-static const char *user_agent_hdr = "User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:10.0.3) Gecko/20120305 Firefox/10.0.3\r\n";
+void *get_start(void *arg);
 
 int main(int argc, char *argv[])
 {
@@ -14,25 +12,47 @@ int main(int argc, char *argv[])
     {
         printf("please input port or only port");
     }
-    int input_port = argv[1];
+    char *input_port = argv[1];
+
+    Sem_init(&mutex, 0, 1);
+
+    Sem_init(&connect_mutex, 0, 1);
+
+    head = malloc(sizeof(ListNode));
+    node_init(head, "\0", "\0", 0);
+
     int listenfd = Open_listenfd(input_port);
     int connfd;
-    struct sockaddr *client_info;
-    while (connfd = Accept(listenfd, &client_info, sizeof(client_info)))
+    while ((connfd = Accept(listenfd, NULL, NULL)))
     {
-        get_userinput(&client_info, connfd);
+        pthread_t tid;
+        pthread_create(&tid, NULL, get_start, (void *)(long)connfd);
     }
-
-    printf("%s", user_agent_hdr);
-    return 0;
 }
 
-void get_userinput(void *user_info, int connfd)
+void *get_start(void *arg)
 {
-    char *buf[MAX_CACHE_SIZE];
-    rio_t *p;
-    Rio_readinitb(p, connfd);
-    while (Rio_readlineb(p, buf, MAX_CACHE_SIZE) > 0)
+    pthread_detach(pthread_self());
+    int connfd = (int)(long)arg;
+    char buf[MAXBUF];
+    char method[10];
+    char uri[300];
+    char version[10];
+    get_userinput(connfd, buf, method, uri, version);
+
+    char protocol[10];
+    char hostname[100];
+    char port[10];
+    char path[200];
+    sscanf(uri, "%[^:]://%[^:]:%[^/]%s", protocol, hostname, port, path);
+    if (strcmp(method, "CONNECT") == 0)
     {
+        sscanf(uri, "%[^:]:%s", hostname, port);
+        connect_head(connfd, hostname, port);
     }
+    else
+    {
+        get_head(connfd, method, hostname, port, path);
+    }
+    return NULL;
 }

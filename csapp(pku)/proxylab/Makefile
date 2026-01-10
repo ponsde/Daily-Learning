@@ -14,12 +14,17 @@ all: proxy
 csapp.o: csapp.c csapp.h
 	$(CC) $(CFLAGS) -c csapp.c
 
-proxy.o: proxy.c csapp.h
+my_get.o: my_get.c my_get.h csapp.h
+	$(CC) $(CFLAGS) -c my_get.c
+
+my_connect.o: my_connect.c my_connect.h csapp.h
+	$(CC) $(CFLAGS) -c my_connect.c
+
+proxy.o: proxy.c csapp.h my_get.h
 	$(CC) $(CFLAGS) -c proxy.c
 
-proxy: proxy.o csapp.o
-	$(CC) $(CFLAGS) proxy.o csapp.o -o proxy $(LDFLAGS)
-
+proxy: proxy.o csapp.o my_get.o my_connect.o
+	$(CC) $(CFLAGS) proxy.o csapp.o my_get.o my_connect.o -o proxy $(LDFLAGS)
 # Creates a tarball in ../proxylab-handin.tar that you should then
 # hand in to Autolab. DO NOT MODIFY THIS!
 handin:
