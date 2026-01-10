@@ -16,11 +16,11 @@
 *   **课程 CS106L (Stanford):** 进度一半
 
 *   **课程 CSAPP (PKU ICS):** 正在进行
-    *   完成: [Data Lab](./csapp(pku)/datalab)
-    *   完成: [Bomb Lab](./csapp(pku)/bomblab)
-    *   完成: [Attack Lab](./csapp(pku)/attacklab)
-    *   部分完成: [Arch Lab](./csapp(pku)/archlab)
-    *   正在完成: [Proxy Lab](./csapp(pku)/proxylab)
+    *   完成: [Data Lab]
+    *   完成: [Bomb Lab]
+    *   完成: [Attack Lab]
+    *   部分完成: [Arch Lab]
+    *   完成: [Proxy Lab]
 
 
 
