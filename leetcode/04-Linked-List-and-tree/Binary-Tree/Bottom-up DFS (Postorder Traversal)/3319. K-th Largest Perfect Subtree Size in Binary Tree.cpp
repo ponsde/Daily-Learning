@@ -19,7 +19,6 @@ class Solution
 public:
     int kthLargestPerfectSubtree(TreeNode *root, int k)
     {
-        vector<int> vec;
         priority_queue<int, vector<int>, greater<>> pq;
         auto dfs = [&](auto &&self, TreeNode *node) -> pair<bool, int>
         {
@@ -36,21 +35,17 @@ public:
                 }
                 return {true, 1};
             }
-            auto [l_b, l_len] = self(self, node->left);
-            auto [r_b, r_len] = self(self, node->right);
-            if (l_b && r_b)
+            auto [b_l, y_l] = self(self, node->left);
+            auto [b_r, y_r] = self(self, node->right);
+            if (b_l && b_r && y_l == y_r)
             {
-                if (l_len == r_len)
+                pq.push(y_l + 1);
+                if (pq.size() > k)
                 {
-                    pq.push(l_len + 1);
-                    if (pq.size() > k)
-                    {
-                        pq.pop();
-                    }
-                    return {true, min(l_len, r_len) + 1};
+                    pq.pop();
                 }
             }
-            return {false, 0};
+            return {b_l && b_r && y_l == y_r, y_l + 1};
         };
         dfs(dfs, root);
         if (pq.size() < k)
