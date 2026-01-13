@@ -53,4 +53,4 @@ leetcode binary tree 3319（重做一遍）(完成)
 leetcode binary tree 1372（重做一遍）(完成)
 leetcode binary tree 1145（重做一遍）(完成)
 
-leetcode binary tree 1372（重做一遍）
+leetcode binary tree 1372（重做一遍）(完成)
