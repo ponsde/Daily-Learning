@@ -55,6 +55,6 @@ leetcode binary tree 1145（重做一遍）(完成)
 
 leetcode binary tree 1372（重做一遍）(完成)
 
-leetcode binary tree 538 (用二叉搜索树的方法再做一遍)
-leetcode binary tree 1080 (用递归自己再做一遍)
-leetcode binary tree 2385 (再做一遍)
+leetcode binary tree 538 (用二叉搜索树的方法再做一遍)(完成)
+leetcode binary tree 1080 (用递归自己再做一遍)(完成)
+leetcode binary tree 2385 (再做一遍)(完成)
