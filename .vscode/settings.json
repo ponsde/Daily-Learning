@@ -15,5 +15,6 @@
         },
         "editor.suggest.showWords": false,
         "editor.acceptSuggestionOnEnter": "off"
-    }
+    },
+    "cmake.sourceDirectory": "/home/ponsde/Daily-Learning/CS106L/final_assignments/WikiRacer_part2"
 }
