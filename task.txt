@@ -65,3 +65,8 @@ leetcode binary tree 2096 (再做一遍)
 leetcode dp 377 (再做一遍)(完成)
 
 leetcode dp 3186 (再做一遍)
+
+http://acm.ocrosoft.com/problem.php?cid=6193&pid=1 (再做一遍)
+http://acm.ocrosoft.com/problem.php?cid=6193&pid=2 (再做一遍)
+
+leetcode binary tree 530 (再做一遍)
