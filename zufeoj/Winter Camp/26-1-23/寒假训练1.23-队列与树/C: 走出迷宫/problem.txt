@@ -1,0 +1,23 @@
+When you stand in a maze, you often lose your sense of direction due to the intricate roads. If you can get a maze map, things will become very simple.
+Assuming you have obtained a blueprint of an n * m maze, please find the shortest path from the starting point to the exit.
+The first row of input consists of two integers n and m (1 ≤ n, m ≤ 100), representing the number of rows and columns in the maze.
+Next, n lines, each with a string of length m, representing the layout of the entire maze. Character '.' Represents an empty space, '#' represents a wall‘ S' represents the starting point‘ T 'stands for export.
+Output the minimum number of steps required from the starting point to the exit.
+
+
+
+
+
+当你站在一个迷宫里的时候，往往会被错综复杂的道路弄得失去方向感，如果你能得到迷宫地图，事情就会变得非常简单。
+
+假设你已经得到了一个n*m的迷宫的图纸，请你找出从起点到出口的最短路。
+
+走出迷宫
+
+
+视频讲解：https://www.bilibili.com/video/BV1WjqaBpEL1/?vd_source=398d1f1b78a749026d665c575cad4731
+
+
+
+
+知识点讲解：https://www.bilibili.com/video/BV1AjqaBpEto/?vd_source=398d1f1b78a749026d665c575cad4731

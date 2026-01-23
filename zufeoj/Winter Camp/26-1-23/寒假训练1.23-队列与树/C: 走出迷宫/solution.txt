@@ -1,0 +1,61 @@
+#include <bits/stdc++.h>
+  
+using namespace std;
+  
+const int dx[] = {0, 0, 1, -1};
+const int dy[] = {1, -1, 0, 0};
+  
+const int N = 110;
+  
+char grid[N][N];
+  
+int main(void)
+{
+    int m, n;
+    cin >> m >> n;
+    int x0, y0;
+    for (int i = 0; i < m; ++i)
+    {
+        for (int j = 0; j < n; ++j)
+        {
+            char a;
+            cin >> a;
+            if (a == 'S')
+            {
+                x0 = i;
+                y0 = j;
+            }
+            grid[i][j] = a;
+        }
+    }
+    queue<pair<int, int>> q;
+    q.push({x0, y0});
+    unordered_map<int, int> hash;
+    while (!q.empty())
+    {
+        auto k = q.front(); q.pop();
+        int x = k.first;
+        int y = k.second;
+        if (grid[x][y] == 'T')
+        {
+            cout << hash[x * n + y] << '\n';
+            return 0;
+        }
+        for (int i = 0; i < 4; ++i)
+        {
+            int x1 = x + dx[i];
+            int y1 = y + dy[i];
+            if (x1 < 0 || x1 >= m || y1 < 0 || y1 >= n || grid[x1][y1] == '#')
+            {
+                continue;
+            }
+            auto it = hash.find(x1 * n + y1);
+            if (it != hash.end())
+            {
+                continue;
+            }
+            q.push({x1, y1});
+            hash[x1 * n + y1] = hash[x * n + y] + 1;
+        }
+    }
+}

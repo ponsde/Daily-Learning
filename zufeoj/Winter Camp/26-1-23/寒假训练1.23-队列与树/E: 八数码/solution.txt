@@ -1,0 +1,66 @@
+#include <bits/stdc++.h>
+ 
+using namespace std;
+ 
+const int dx[] = {-1, 1, 0, 0};
+const int dy[] = {0, 0, -1, 1};
+  
+int main(void)
+{
+    string des = "123804765";
+    string a;
+    cin >> a;
+    queue<string> q;
+    unordered_map<string, int> hash;
+    q.push(a);
+    hash[a] = 0;
+    auto xy2idx = [](int x, int y) -> vector<int>
+    {
+        vector<int> vec;
+        for (int i = 0; i < 4; ++i)
+        {
+            int x1 = x + dx[i];
+            int y1 = y + dy[i];
+            if (x1 < 0 || x1 > 2 || y1 < 0 || y1 > 2)
+            {
+                continue;
+            }
+            vec.push_back(x1 * 3 + y1);
+        }
+        return vec;
+    };
+    while (!q.empty())
+    {
+        string cur = q.front(); q.pop();
+        if (cur == des)
+        {
+            cout << hash[cur] << '\n';
+            return 0;
+        }
+        int l = cur.size();
+        for (int i = 0; i < l; ++i)
+        {
+            if (cur[i] != '0')
+            {
+                continue;
+            }
+            int x = i / 3;
+            int y = i % 3;
+            vector<int> vec = xy2idx(x, y);
+            for (int j = 0; j < vec.size(); ++j)
+            {
+                int m = vec[j];
+                string k = cur;
+                k[i] = cur[m];
+                k[m] = '0';
+                auto it = hash.find(k);
+                if (it != hash.end())
+                {
+                    continue;
+                }
+                hash[k] = hash[cur] + 1;
+                q.push(k);
+            }
+        }
+    }
+}
