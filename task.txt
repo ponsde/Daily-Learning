@@ -75,3 +75,5 @@ leetcode dp 3186 (再做一遍)
 http://acm.ocrosoft.com/problem.php?cid=6195&pid=3(再做一遍)
 
 http://acm.ocrosoft.com/problem.php?cid=6197&pid=3(再做一遍) （好难...）
+
+leetcode dp 2140(再做一遍)
