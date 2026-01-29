@@ -76,8 +76,8 @@ http://acm.ocrosoft.com/problem.php?cid=6195&pid=3(再做一遍)
 
 http://acm.ocrosoft.com/problem.php?cid=6197&pid=3(再做一遍) （好难...）
 
-leetcode dp 2140(再做一遍)
-leetcode dp 1749(再做一遍)
+leetcode dp 2140 (再做一遍)(完成)
+leetcode dp 1749 (再做一遍)(完成)
 
 
 http://acm.ocrosoft.com/problem.php?cid=6199&pid=1 (再做一遍)
@@ -85,3 +85,5 @@ http://acm.ocrosoft.com/problem.php?cid=6199&pid=4 (再做一遍)
 
 http://acm.ocrosoft.com/problem.php?cid=6201&pid=0 (再做一遍)
 http://acm.ocrosoft.com/problem.php?cid=6201&pid=1 (再做一遍)
+
+leetcode dp 2321 (再做一遍)
