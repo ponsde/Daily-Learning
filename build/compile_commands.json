@@ -1,0 +1,20 @@
+[
+{
+  "directory": "/home/ponsde/Daily-Learning/build",
+  "command": "/usr/bin/g++   -g -std=gnu++17 -o CMakeFiles/main.dir/main.cpp.o -c /home/ponsde/Daily-Learning/CS106L/final_assignments/WikiRacer_part2/main.cpp",
+  "file": "/home/ponsde/Daily-Learning/CS106L/final_assignments/WikiRacer_part2/main.cpp",
+  "output": "CMakeFiles/main.dir/main.cpp.o"
+},
+{
+  "directory": "/home/ponsde/Daily-Learning/build",
+  "command": "/usr/bin/g++   -g -std=gnu++17 -o CMakeFiles/main.dir/wikiscraper.cpp.o -c /home/ponsde/Daily-Learning/CS106L/final_assignments/WikiRacer_part2/wikiscraper.cpp",
+  "file": "/home/ponsde/Daily-Learning/CS106L/final_assignments/WikiRacer_part2/wikiscraper.cpp",
+  "output": "CMakeFiles/main.dir/wikiscraper.cpp.o"
+},
+{
+  "directory": "/home/ponsde/Daily-Learning/build",
+  "command": "/usr/bin/g++   -g -std=gnu++17 -o CMakeFiles/main.dir/error.cpp.o -c /home/ponsde/Daily-Learning/CS106L/final_assignments/WikiRacer_part2/error.cpp",
+  "file": "/home/ponsde/Daily-Learning/CS106L/final_assignments/WikiRacer_part2/error.cpp",
+  "output": "CMakeFiles/main.dir/error.cpp.o"
+}
+]

@@ -1,0 +1,3 @@
+/home/ponsde/Daily-Learning/build/CMakeFiles/main.dir
+/home/ponsde/Daily-Learning/build/CMakeFiles/edit_cache.dir
+/home/ponsde/Daily-Learning/build/CMakeFiles/rebuild_cache.dir

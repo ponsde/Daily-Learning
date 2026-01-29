@@ -1,0 +1,1 @@
+/usr/bin/g++ -g -rdynamic CMakeFiles/main.dir/main.cpp.o CMakeFiles/main.dir/wikiscraper.cpp.o CMakeFiles/main.dir/error.cpp.o -o main  /usr/local/lib/libcpr.a /usr/lib/x86_64-linux-gnu/libcurl.so /usr/lib/x86_64-linux-gnu/libssl.so /usr/lib/x86_64-linux-gnu/libcrypto.so 
