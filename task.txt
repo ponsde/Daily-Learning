@@ -59,8 +59,8 @@ leetcode binary tree 538 (用二叉搜索树的方法再做一遍)(完成)
 leetcode binary tree 1080 (用递归自己再做一遍)(完成)
 leetcode binary tree 2385 (再做一遍)(完成)
 
-leetcode binary tree 1123 (再做一遍)
-leetcode binary tree 2096 (再做一遍)
+leetcode binary tree 1123 (再做一遍)(完成)
+leetcode binary tree 2096 (再做一遍)(完成)
 
 leetcode dp 377 (再做一遍)(完成)
 
@@ -69,9 +69,9 @@ leetcode dp 3186 (再做一遍)(完成)
 http://acm.ocrosoft.com/problem.php?cid=6193&pid=1 (再做一遍)
 http://acm.ocrosoft.com/problem.php?cid=6193&pid=2 (再做一遍)
 
-leetcode binary tree 530 (再做一遍)
+leetcode binary tree 530 (再做一遍)(完成)
 
-leetcode dp 3186 (再做一遍)
+leetcode dp 3186 (再做一遍)(完成)
 http://acm.ocrosoft.com/problem.php?cid=6195&pid=3(再做一遍)
 
 http://acm.ocrosoft.com/problem.php?cid=6197&pid=3(再做一遍) （好难...）
@@ -86,7 +86,7 @@ http://acm.ocrosoft.com/problem.php?cid=6199&pid=4 (再做一遍)
 http://acm.ocrosoft.com/problem.php?cid=6201&pid=0 (再做一遍)
 http://acm.ocrosoft.com/problem.php?cid=6201&pid=1 (再做一遍)
 
-leetcode dp 2321 (再做一遍)
+leetcode dp 2321 (再做一遍)(完成)
 
 leetcode dp 152 (再做一遍)
 leetcode dp 1186 (再做一遍)
@@ -94,3 +94,5 @@ leetcode dp 1186 (再做一遍)
 
 http://acm.ocrosoft.com/problem.php?cid=6215&pid=1 (再做一遍)
 http://acm.ocrosoft.com/problem.php?cid=6215&pid=2 (再做一遍)
+
+leetcode binary tree 530 (再做一遍)
