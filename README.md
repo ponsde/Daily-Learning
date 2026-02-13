@@ -13,14 +13,18 @@
 *   **课程 CS50 (Harvard):** 完成 Week 1-5
 *   **课程 CSAPP (CMU):** 完成 Chapter 1-9 及其对应lab
 *   **课程 CS106B (Stanford):** 进度一半
-*   **课程 CS106L (Stanford):** 进度一半
+*   **课程 CS106L (Stanford):** 完成
 
-*   **课程 CSAPP (PKU ICS):** 正在进行
-    *   完成: [Data Lab]
-    *   完成: [Bomb Lab]
-    *   完成: [Attack Lab]
-    *   部分完成: [Arch Lab]
-    *   完成: [Proxy Lab]
+*   **课程 CSAPP (PKU ICS):** 部分完成
+    *   完成: Data Lab
+    *   完成: Bomb Lab
+    *   完成: Attack Lab
+    *   部分完成: Arch Lab
+    *   完成: Proxy Lab
+
+*   **课程 CS106L (Stanford):**
+    *   完成: WikiRacer
+    *   完成: HashMap
 
 
 
