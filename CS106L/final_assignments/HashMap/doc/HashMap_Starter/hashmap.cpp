@@ -248,4 +248,77 @@ std::ostream& operator<<(std::ostream& os, const HashMap<K, M, H>& rhs) {
 
 /* Begin Milestone 2: Special Member Functions */
 
+
+template <typename K, typename M, typename H>
+HashMap<K, M, H>::HashMap(const HashMap& other)
+{
+    _buckets_array = other._buckets_array;
+    _size = other._size;
+    _hash_function = other._hash_function;
+}
+
+template <typename K, typename M, typename H>
+HashMap<K, M, H>::HashMap(HashMap<K, M, H>&& other)
+{
+    _buckets_array = std::move(other._buckets_array);
+    _hash_function = std::move(other._hash_function);
+    _size = other._size;
+}
+
+
+// template <typename K, typename M, typename H>
+// HashMap<K, M, H>::HashMap(std::initializer_list<typename HashMap<K, M, H>::value_type> init, size_t bucket_cnt, const H& hash) 
+// : _hash_function(hash)
+// {
+//     _buckets_array.resize(bucket_cnt);
+//     for (const auto& p : init)
+//     {
+//         insert(p);
+//     }
+// }
+
+template <typename K, typename M, typename H>
+HashMap<K, M, H>& HashMap<K, M, H>::operator=(const HashMap<K, M, H>& other)
+{
+    if (this == &other)
+    {
+        return *this;
+    }
+    clear();
+    _hash_function = other._hash_function;
+    _buckets_array.assign(other.bucket_count(), nullptr);
+    for (auto& head : other._buckets_array)
+    {
+        auto cur = head;
+        while (cur)
+        {
+            insert(cur->value);
+            cur = cur->next;
+        }
+    }
+    return *this;
+}
+
+
+template<typename K, typename M, typename H>
+HashMap<K, M, H>& HashMap<K, M, H>::operator=(std::initializer_list<typename HashMap<K, M, H>::value_type> init)
+{
+    clear();
+    _buckets_array.assign(bucket_count(), nullptr);
+    for (auto& p : init)
+    {
+        insert(p);
+    }
+    return *this;
+}
+
+template<typename K, typename M, typename H>
+HashMap<K, M, H>& HashMap<K, M, H>::operator=(HashMap<K, M, H>&& other)
+{
+    clear();
+    _buckets_array = std::move(other._buckets_array);
+    _hash_function =  std::move(other._hash_function);
+    _size = other._size;
+}
+
 /* end student code */

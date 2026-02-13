@@ -455,6 +455,19 @@ public:
     /* Milestone 2 headers (you need to declare these) */
     // TODO: declare headers for copy constructor/assignment, move constructor/assignment
 
+    HashMap(const HashMap& other);
+
+    HashMap(std::initializer_list<value_type> init, size_t bucket_cnt = kDefaultBuckets, const H& hash = H());
+
+    HashMap(HashMap&& other);
+
+    HashMap& operator=(const HashMap& other);
+
+    HashMap& operator=(std::initializer_list<value_type> init);
+
+    HashMap& operator=(HashMap&& other);
+
+    
 private:
     /*
     * node structure represented a node in a linked list.

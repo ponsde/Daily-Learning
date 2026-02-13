@@ -21,21 +21,21 @@ const std::vector<std::string> keys {"A", "B", "C", "Not found"};
     ASSERT_TRUE((answer).empty() == (map).empty()); \
     ASSERT_TRUE((answer).size() == (map).size()); \
     for (const auto& [key, mapped] : (answer)) { \
-        ASSERT_TRUE((map).contains(key) != false) << "Map doesn't contain " << key << "-" << mapped; \
+        ASSERT_TRUE((map).contains(key) != false) << "Map 不包含 " << key << "-" << mapped; \
         ASSERT_TRUE((map).at(key) == mapped); \
     } \
 }
 
 // ----------------------------------------------------------------------------------------------
-/* Milestone 1 Test Cases */
+/* 里程碑 1 测试用例 */
 
 /*
-* Verifies basic operations by comparing behavior with std::unordered_map
-*      - default ctor
+* 通过与 std::unordered_map 比较行为来验证基本操作
+*      - 默认构造函数
 *      - size, empty, bucket_count
-*      - contains, at (used as an r-value)
+*      - contains, at（用作右值）
 *
-* Mainly checking that CHECK_MAP_EQUAL compiles correctly.
+* 主要检查 CHECK_MAP_EQUAL 是否正确编译。
 */
 #if RUN_TEST_1A
 TEST(HashMapTest, TEST_1A_BASIC) {
@@ -47,7 +47,7 @@ TEST(HashMapTest, TEST_1A_BASIC) {
 #endif
 
 /*
-* Verifies functionality of insert.
+* 验证 insert 的功能。
 */
 #if RUN_TEST_1B
 TEST(HashMapTest, TEST_1B_INSERT) {

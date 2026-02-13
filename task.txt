@@ -113,3 +113,6 @@ http://acm.ocrosoft.com/problem.php?cid=6221&pid=3
 leetcode dp 1301 (再做一遍)
 
 leetcode dp 2435 (再做一遍)
+
+leetcode dp 174 (再做一遍)
+leetcode dp 329 (再做一遍)
