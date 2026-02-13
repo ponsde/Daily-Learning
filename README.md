@@ -42,3 +42,8 @@
     *   **正在完成:** [链表、树、回溯](https://leetcode.cn/discuss/post/3142882/fen-xiang-gun-ti-dan-lian-biao-er-cha-sh-6srp/)
         *   正在完成 [链表](./leetcode/04-Linked-List-and-tree/Linked-List)
         *   正在完成 [树](./leetcode/04-Linked-List-and-tree/Binary-Tree)
+
+    *   **正在完成:** [动态规划](https://leetcode.cn/discuss/post/3581838/fen-xiang-gun-ti-dan-dong-tai-gui-hua-ru-007o/)
+        *   部分完成 [入门 DP](./leetcode/07-Dynamic-Programming/Introduction-to-Dynamic-Programming)
+        *   部分完成 [网格图 DP](./leetcode/07-Dynamic-Programming/Grid-DP)
+        *   正在完成 [背包](./leetcode/07-Dynamic-Programming/Knapsack-Problem)
