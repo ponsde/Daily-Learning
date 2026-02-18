@@ -110,13 +110,18 @@ leetcode dp 1824 (再做一遍)
 http://acm.ocrosoft.com/problem.php?cid=6221&pid=2
 http://acm.ocrosoft.com/problem.php?cid=6221&pid=3
 
-leetcode dp 1301 (再做一遍)
+leetcode dp 1301 (再做一遍)（完成）
 
-leetcode dp 2435 (再做一遍)
+leetcode dp 2435 (再做一遍)（完成）
 
-leetcode dp 174 (再做一遍)
-leetcode dp 329 (再做一遍)
+leetcode dp 174 (再做一遍)（完成）
+leetcode dp 329 (再做一遍)（完成）
 
 leetcode dp 2915 (再做一遍)（完成）
 
 leetcode dp 2787  (再做一遍)
+
+leetcode dp 3180 （位运算再做做）
+
+leetcode dp 174 (再做一遍)
+leetcode dp 1301 (再做一遍)
