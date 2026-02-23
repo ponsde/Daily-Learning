@@ -1,0 +1,7 @@
+os/Lab0/warehouse/bomb-* -text binary
+os/**/*.elf -text binary
+os/**/*.bin -text binary
+os/**/*.img -text binary
+os/**/*.a -text binary
+os/**/*.so -text binary
+os/Lab*/user/procmgr -text binary
