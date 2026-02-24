@@ -123,8 +123,13 @@ leetcode dp 2787  (再做一遍)（完成）
 
 leetcode dp 3180 （位运算再做做）（完成）
 
-leetcode dp 174 (再做一遍)
-leetcode dp 1301 (再做一遍)
+leetcode dp 174 (再做一遍)（完成）
+leetcode dp 1301 (再做一遍)（完成）
 
+leetcode dp 3592 (再做一遍)（完成）
+leetcode dp 1449 (再做一遍)（完成）
+
+leetcode dp 2585 (再做一遍)
+leetcode dp 1155 (再做一遍)
 leetcode dp 3592 (再做一遍)
 leetcode dp 1449 (再做一遍)
