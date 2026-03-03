@@ -138,5 +138,7 @@ os lab0 phase_4 (再做一遍)
 
 os lab0 phase_5 (再做一遍)
 
-leetcode dp 583 (再做一遍)
-leetcode dp 712 (再做一遍)
+leetcode dp 583 (再做一遍)（完成）
+leetcode dp 712 (再做一遍)（完成）
+
+leetcode dp 72 (再做一遍)
