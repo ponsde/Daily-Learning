@@ -1,1 +1,0 @@
-void copy_directory(const char *src, const char *dst);
