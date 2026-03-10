@@ -141,10 +141,19 @@ os lab0 phase_5 (再做一遍)
 leetcode dp 583 (再做一遍)（完成）
 leetcode dp 712 (再做一遍)（完成）
 
-leetcode dp 72 (再做一遍)
-leetcode dp 1035 (再做一遍)
+leetcode dp 72 (再做一遍) (完成)
+leetcode dp 1035 (再做一遍)(完成)
 leetcode binary 501 (再做一遍)（完成）
 
-leetcode binary 98 (再做一遍)
-leetcode binary 1305 (再做一遍)
+leetcode binary 98 (再做一遍)（完成）
+leetcode binary 1305 (再做一遍)（完成）
 leetcode binary 99 (再做一遍)
+
+
+leetcode binary 1305 (再做一遍)
+
+leetcode binary 1458 (再做一遍)
+leetcode binary 718 (再做一遍)
+
+
+
