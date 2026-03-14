@@ -155,5 +155,7 @@ leetcode binary 1305 (再做一遍)
 leetcode binary 1458 (再做一遍)
 leetcode binary 718 (再做一遍)
 
-
+leetcode binary 3290 (再做一遍)(完成)
+leetcode binary 115 (再做一遍)
+leetcode binary 3628 (再做一遍)
 
