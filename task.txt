@@ -159,3 +159,11 @@ leetcode binary 3290 (再做一遍)(完成)
 leetcode binary 115 (再做一遍)
 leetcode binary 3628 (再做一遍)
 
+https://www.lanqiao.cn/problems/89/learning/?page=1&first_category_id=1&second_category_id=3 (完成)
+https://www.lanqiao.cn/problems/101/learning/?page=1&first_category_id=1&second_category_id=3&difficulty=20&difficulty_level_gte=6&difficulty_level_lte=10 (完成)
+
+leetcode 2132 (再做一遍)
+
+https://www.lanqiao.cn/problems/109/learning/?page=1&first_category_id=1&difficulty_level_gte=6&difficulty_level_lte=10
+
+
