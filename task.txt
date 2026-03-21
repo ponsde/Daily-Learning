@@ -166,4 +166,7 @@ leetcode 2132 (再做一遍)
 
 https://www.lanqiao.cn/problems/109/learning/?page=1&first_category_id=1&difficulty_level_gte=6&difficulty_level_lte=10
 
+leetcode binary 108 (再做一遍)
+leetcode binary 998 (再做一遍)
+leetcode dp 3316 (再做一遍)
 
