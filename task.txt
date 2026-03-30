@@ -182,3 +182,6 @@ leetcode binary 106 (再做一遍)（完成）
 leetcode daily 3548 (再做一遍)
 
 leetcode binary 106 (再做一遍)
+
+leetcode binary 669 (再做一遍)
+leetcode binary 337 (再做一遍)
