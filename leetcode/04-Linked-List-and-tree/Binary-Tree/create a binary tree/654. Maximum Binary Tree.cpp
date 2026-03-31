@@ -2,7 +2,8 @@
 
 using namespace std;
 
-struct TreeNode {
+struct TreeNode
+{
     int val;
     TreeNode *left;
     TreeNode *right;
@@ -11,12 +12,15 @@ struct TreeNode {
     TreeNode(int x, TreeNode *left, TreeNode *right) : val(x), left(left), right(right) {}
 };
 
-class Solution {
+class Solution
+{
 public:
-    TreeNode* constructMaximumBinaryTree(vector<int>& nums) {
-        auto dfs = [&](auto&& self, int left, int right) -> TreeNode*
+    TreeNode *constructMaximumBinaryTree(vector<int> &nums)
+    {
+        auto dfs = [&](auto &&self, int left, int right) -> TreeNode *
         {
-            if (left == right) return nullptr;
+            if (left == right)
+                return nullptr;
             int idx = max_element(nums.begin() + left, nums.begin() + right) - nums.begin();
             return new TreeNode(nums[idx], self(self, left, idx), self(self, idx + 1, right));
         };
@@ -26,3 +30,4 @@ public:
 
 /*
  * 按照题意弄就行，每一个子数组按照要求弄即可
+ */
