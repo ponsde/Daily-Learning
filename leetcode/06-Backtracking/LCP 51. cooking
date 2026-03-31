@@ -1,0 +1,49 @@
+#include <bits/stdc++.h>
+
+using namespace std;
+
+class Solution
+{
+public:
+    int perfectMenu(vector<int> &materials, vector<vector<int>> &cookbooks, vector<vector<int>> &attribute, int limit)
+    {
+        int lc = cookbooks.size();
+        int ans = -1;
+        auto dfs = [&](auto &&self, int i, int x, int y)
+        {
+            if (i == lc)
+            {
+                if (y >= limit)
+                {
+                    ans = max(ans, x);
+                }
+                return;
+            }
+            bool is_can = true;
+            vector<int> pre = materials;
+            for (int j = 0; j < 5; ++j)
+            {
+                materials[j] -= cookbooks[i][j];
+                if (materials[j] < 0)
+                {
+                    materials = move(pre);
+                    is_can = false;
+                    break;
+                }
+            }
+            if (is_can)
+            {
+                self(self, i + 1, x + attribute[i][0], y + attribute[i][1]);
+                materials = move(pre);
+            }
+            self(self, i + 1, x, y);
+        };
+        dfs(dfs, 0, 0, 0);
+        return ans;
+    }
+};
+
+/*
+    若是第i道能做，那么做一个试试，然后递归
+    然后考虑不做，直接递归
+*/
