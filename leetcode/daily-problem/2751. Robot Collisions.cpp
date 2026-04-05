@@ -93,3 +93,64 @@ public:
 
     太困了，明天再看题解
 */
+
+class Solution
+{
+public:
+    vector<int> survivedRobotsHealths(vector<int> &positions, vector<int> &healths, string directions)
+    {
+        int l = positions.size();
+        vector<int> idxs(l);
+        iota(idxs.begin(), idxs.end(), 0);
+        auto cmp = [&](const auto &a, const auto &b)
+        {
+            return positions[a] < positions[b];
+        };
+        sort(idxs.begin(), idxs.end(), cmp);
+        stack<int> st;
+        for (auto i : idxs)
+        {
+
+            if (directions[i] == 'R')
+            {
+                st.push(i);
+                continue;
+            }
+
+            while (!st.empty())
+            {
+                int j = st.top();
+                if (healths[j] == healths[i])
+                {
+                    healths[j] = -1;
+                    healths[i] = -1;
+                    st.pop();
+                    break;
+                }
+                if (healths[j] > healths[i])
+                {
+                    healths[j] -= 1;
+                    healths[i] = -1;
+                    break;
+                }
+                healths[i] -= 1;
+                healths[j] = -1;
+                st.pop();
+            }
+        }
+        vector<int> ans;
+        for (int i = 0; i < l; ++i)
+        {
+            if (healths[i] > 0)
+            {
+                ans.push_back(healths[i]);
+            }
+        }
+        return ans;
+    }
+};
+
+/*
+    灵神的做法，确实优雅点
+    通过idxs储存从左到右的机器人编号
+*/
