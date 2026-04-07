@@ -191,3 +191,7 @@ leetcode daily 2751 (看题解)（完成）
 leetcode dp 2111 (进阶再思考一遍)
 
 leetcode daily 874 (进阶再思考一遍)
+
+https://www.lanqiao.cn/paper/5710/result/
+
+leetcode daily 2069
