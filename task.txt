@@ -197,3 +197,8 @@ https://www.lanqiao.cn/paper/5710/result/
 leetcode daily 2069
 
 https://www.luogu.com.cn/problem/P3383
+
+https://www.luogu.com.cn/problem/B4324?contestId=319883
+https://www.luogu.com.cn/problem/P3366?contestId=319883
+https://www.luogu.com.cn/problem/P4779
+https://www.luogu.com.cn/problem/P1886?contestId=319883
