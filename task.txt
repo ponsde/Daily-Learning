@@ -208,3 +208,5 @@ leetcode dp 1671
 leetcode dp 354 (完成)
 
 leetcode dp 1626
+
+leetcode dp 673
