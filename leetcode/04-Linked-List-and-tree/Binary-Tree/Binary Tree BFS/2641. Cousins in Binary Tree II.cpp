@@ -9,12 +9,13 @@ struct TreeNode
     TreeNode *right;
     TreeNode() : val(0), left(nullptr), right(nullptr) {}
     TreeNode(int x) : val(x), left(nullptr), right(nullptr) {}
-    TreeNode(int x, TreeNode *left, TreeNode *right) : val(x), left(left), right(right) {}
+    TreeNode(int x, TreeNode *left, TreeNode *right)
+        : val(x), left(left), right(right) {}
 };
 
 class Solution
 {
-public:
+  public:
     TreeNode *replaceValueInTree(TreeNode *root)
     {
         queue<pair<TreeNode *, TreeNode *>> q;
@@ -52,3 +53,59 @@ public:
 /*
     有点笨采用记录父节点然后多次历遍来...
 */
+
+// 换了个方法，不记录父节点来做
+
+class Solution2
+{
+  public:
+    TreeNode *replaceValueInTree(TreeNode *root)
+    {
+        queue<TreeNode *> q;
+        root->val = 0;
+        q.push(root);
+        while (!q.empty())
+        {
+            int lq = q.size();
+            int sum = 0;
+            vector<TreeNode *> fa(lq);
+            for (int i = 0; i < lq; ++i)
+            {
+                auto node = q.front();
+                q.pop();
+                fa[i] = node;
+                int t = 0;
+                if (node->left)
+                {
+                    q.push(node->left);
+                    sum += node->left->val;
+                    t += node->left->val;
+                }
+                if (node->right)
+                {
+                    q.push(node->right);
+                    sum += node->right->val;
+                    t += node->right->val;
+                }
+                if (node->left)
+                    node->left->val = t;
+                if (node->right)
+                    node->right->val = t;
+            }
+            for (auto node : fa)
+            {
+                if (node->left)
+                    node->left->val = sum - node->left->val;
+                if (node->right)
+                    node->right->val = sum - node->right->val;
+            }
+        }
+        return root;
+    }
+};
+
+/*
+ * 这里一边记录改父节点的子节点所有的和，一边记录节点
+ * 然后历遍节点时，将将该父节点的子节点和填到子节点上，这样更新时只需要将sum -
+ * 当前的val就行
+ */
