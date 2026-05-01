@@ -4,7 +4,7 @@ using namespace std;
 
 class Solution
 {
-public:
+  public:
     int perfectMenu(vector<int> &materials, vector<vector<int>> &cookbooks, vector<vector<int>> &attribute, int limit)
     {
         int lc = cookbooks.size();
@@ -26,7 +26,7 @@ public:
                 materials[j] -= cookbooks[i][j];
                 if (materials[j] < 0)
                 {
-                    materials = move(pre);
+                    materials = std::move(pre);
                     is_can = false;
                     break;
                 }
@@ -34,7 +34,7 @@ public:
             if (is_can)
             {
                 self(self, i + 1, x + attribute[i][0], y + attribute[i][1]);
-                materials = move(pre);
+                materials = std::move(pre);
             }
             self(self, i + 1, x, y);
         };
