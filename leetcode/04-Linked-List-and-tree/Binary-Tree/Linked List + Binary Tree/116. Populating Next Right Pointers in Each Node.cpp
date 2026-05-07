@@ -69,7 +69,7 @@ public:
 };
 */
 
-class Solution
+class Solution2
 {
   public:
     Node *connect(Node *root)
