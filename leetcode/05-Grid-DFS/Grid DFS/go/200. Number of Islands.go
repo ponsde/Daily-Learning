@@ -1,10 +1,10 @@
-package main
+package GridDFS
 
 type pair struct{ x, y int }
 
-var dirs = [4]pair{{0, 1}, {0, -1}, {-1, 0}, {1, 0}}
-
 func numIslands(grid [][]byte) int {
+	dirs := [4]pair{{0, 1}, {0, -1}, {-1, 0}, {1, 0}}
+
 	m, n := len(grid), len(grid[0])
 	vis := make([][]bool, m)
 
