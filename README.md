@@ -33,6 +33,8 @@
     *   完成: Lab4
     *   完成: Lab5
 
+*   **课程 操作系统 (南京大学):** 正在完成
+
 *   **算法 (Algorithms):**
     *   **总纲:** [灵神《如何科学刷题》](https://leetcode.cn/discuss/post/3141566/ru-he-ke-xue-shua-ti-by-endlesscheng-q3yd/)
     *   **部分完成:** [滑动窗口专项题单](https://leetcode.cn/discuss/post/0viNMK/)
@@ -55,4 +57,6 @@
     *   **正在完成:** [动态规划](https://leetcode.cn/discuss/post/3581838/fen-xiang-gun-ti-dan-dong-tai-gui-hua-ru-007o/)
         *   部分完成 [入门 DP](./leetcode/07-Dynamic-Programming/Introduction-to-Dynamic-Programming)
         *   部分完成 [网格图 DP](./leetcode/07-Dynamic-Programming/Grid-DP)
-        *   正在完成 [背包](./leetcode/07-Dynamic-Programming/Knapsack-Problem)
+        *   部分完成 [背包](./leetcode/07-Dynamic-Programming/Knapsack-Problem)
+        *   部分完成 [线性 DP](./leetcode/07-Dynamic-Programming/classic-linear-DP)
+        *   正在完成 [划分型 DP](<./leetcode/07-Dynamic-Programming/Partition DP>)
