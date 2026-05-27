@@ -222,3 +222,5 @@ leetcode binary 116
 leetcode daily 1914
 
 leetcode daily 1674
+
+leetcode daily 154
